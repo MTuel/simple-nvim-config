@@ -1,4 +1,4 @@
-# Basic Neovim Configuration
+# Simple Neovim Configuration
 
 This is a basic configuration file for Neovim. The goal is to keep it pretty minimal but that may change as time goes on and I use Neovim more and accrue additional plugins.
 
