@@ -1,6 +1,6 @@
 # Simple Neovim Configuration
 
-This is a basic configuration file for Neovim. The goal is to keep it pretty minimal but that may change as time goes on and I use Neovim more and accrue additional plugins.
+This is a basic configuration file for Neovim. It's a work in progress but the goal is to keep it pretty minimal.
 
 ## Useful Resources:
 
@@ -22,10 +22,11 @@ Here are some resources (in no particular order) I used in putting this together
 
 - Used for [nvim-markdown-preview](https://github.com/davidgranstrom/nvim-markdown-preview).
 - Install:
+    - [Chocolatey:](https://github.com/chocolatey/choco)
+    ```choco install pandoc```
 
-    - [Chocolatey:](https://github.com/chocolatey/choco) ```choco install pandoc```
-
-    - [Winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/): ```winget install --source winget --exact --id JohnMacFarlane.Pandoc```
+    - [Winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/):
+    ```winget install --source winget --exact --id JohnMacFarlane.Pandoc```
 
 ### [live-server](https://www.npmjs.com/package/live-server)
 
@@ -33,12 +34,53 @@ Here are some resources (in no particular order) I used in putting this together
 
     - [NPM](https://nodejs.org/en/download) ```npm install -g @compodoc/live-server```
 
+## Remaps
+
+
+```Ctrl+S = :w```
+
+```Leader + f(ile) + t(ree)``` opens up netrw.
+
+
 ## Plugins
 
-- Plugin Manager: [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
+- [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
 
-- Color Theme: [catpuccin/nvim](https://github.com/catppuccin/nvim) 
+    - Plugin Manager.
 
-- File Tabs: [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
+- [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
 
-- Markdown Previewing: [davidgranstrom/nvim-markdown-preview](https://github.com/davidgranstrom/nvim-markdown-preview)
+    - Adds a tab for each open buffer along the top of the screen.
+
+    - Keybinds:
+
+        - ```Leader + b(uffer) + n(ext)```
+        
+        - ```Leader + b(uffer) + p(revious)```
+
+- [catpuccin/nvim](https://github.com/catppuccin/nvim) 
+
+    - Color Theme. 
+
+- [davidgranstrom/nvim-markdown-preview](https://github.com/davidgranstrom/nvim-markdown-preview)
+    
+    - Supports previewing markdown files in a web browser. Automatically reloads on file save.
+
+    - Keybindings:
+        - ```Leader + m(arkdown) + p(review)```
+
+- [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+    
+    - Configs for the Nvim LSP Client
+
+- [folke/which-key.nvim](https://github.com/folke/which-key.nvim)
+
+    - Adds in a menu to display possible completions based on the currently typed keybind.
+
+- [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+
+    - Fuzzy finding over lists.
+
+- [nvim-lauline/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+
+    - Customizeable status line.
