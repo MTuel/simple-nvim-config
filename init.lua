@@ -14,6 +14,13 @@ vim.keymap.set('n', '<leader>ft', vim.cmd.Ex)
 -- Map CTRL+S to write the file when in Normal, Insert, or Visual mode.
 vim.keymap.set({'n', 'i', 'v'}, '<C-s>', '<cmd>w<cr>')
 
+
+-- Map window navigation to just CTRL + h/j/k/l
+vim.keymap.set('n', '<C-h>', '<C-W>h')
+vim.keymap.set('n', '<C-j>', '<C-W>j')
+vim.keymap.set('n', '<C-k>', '<C-W>k')
+vim.keymap.set('n', '<C-l>', '<C-W>l')
+
 -- Set TAB size to 4 instead of the default 8.
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
