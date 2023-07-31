@@ -22,11 +22,11 @@ Here are some resources (in no particular order) I used in putting this together
 
 - Used for [nvim-markdown-preview](https://github.com/davidgranstrom/nvim-markdown-preview).
 - Install:
-    - [Chocolatey:](https://github.com/chocolatey/choco)
-    ```choco install pandoc```
+    - [Chocolatey:](https://github.com/chocolatey/choco) 
+	```choco install pandoc```
 
-    - [Winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/):
-    ```winget install --source winget --exact --id JohnMacFarlane.Pandoc```
+    - [Winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/): 
+	```winget install --source winget --exact --id JohnMacFarlane.Pandoc```
 
 ### [live-server](https://www.npmjs.com/package/live-server)
 
@@ -67,7 +67,8 @@ Here are some resources (in no particular order) I used in putting this together
     - Supports previewing markdown files in a web browser. Automatically reloads on file save.
 
     - Keybindings:
-        - ```Leader + m(arkdown) + p(review)```
+        - 
+		```Leader + m(arkdown) + p(review)```
 
 - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
     
