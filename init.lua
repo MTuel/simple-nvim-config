@@ -1,3 +1,6 @@
+-- Heavily based on kickstart.nvim
+-- Thanks to TJ DeVries
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
@@ -5,8 +8,8 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Install package manager
---    https://github.com/folke/lazy.nvim
---    `:help lazy.nvim.txt` for more info
+-- https://github.com/folke/lazy.nvim
+-- `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -30,66 +33,84 @@ require('lazy').setup({
 
   -- # THEME #
 	-- Catppuccin Mocha.
+  -- https://github.com/catppuccin/nvim
 	{
 		'catppuccin/nvim',
 		name = 'catppuccin',
 		priority = 1000
 	},
 
-  -- # MARKDOWN PREVIEW #
+  -- Plugin for previewing markdown files.
+  -- https://github.com/davidgranstrom/nvim-markdown-preview
 	{
 		'davidgranstrom/nvim-markdown-preview'
   },
   
   -- Git related plugins
+  -- https://github.com/tpope/vim-fugitive
   'tpope/vim-fugitive',
+  -- https://github.com/tpope/vim-rhubarb
   'tpope/vim-rhubarb',
 
   -- Detect tabstop and shiftwidth automatically
+  -- https://github.com/tpope/vim-sleuth
   'tpope/vim-sleuth',
   
   -- Syntax Highlighting for .razor files
+  -- https://github.com/jlcrochet/vim-razor
   'jlcrochet/vim-razor',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
     -- LSP Configuration & Plugins
+    -- https://github.com/neovim/nvim-lspconfig
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
+      -- https://github.com/williamboman/mason.nvim
       { 'williamboman/mason.nvim', config = true },
+      -- https://github.com/williamboman/mason-lspconfig.nvim
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
+      -- https://github.com/j-hui/fidget.nvim
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
+      -- https://github.com/folke/folke
       'folke/neodev.nvim',
     },
   },
 
   {
     -- Autocompletion
+    -- https://github.com/hrsh7th/nvim-cmp
     'hrsh7th/nvim-cmp',
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
+      -- https://github.com/L3MON4D3/LuaSnip
       'L3MON4D3/LuaSnip',
+      -- https://github.com/saadparwaiz1/cmp_luasnip
       'saadparwaiz1/cmp_luasnip',
 
       -- Adds LSP completion capabilities
+      -- https://github.com/hrsh7th/cmp-nvim-lsp
       'hrsh7th/cmp-nvim-lsp',
 
       -- Adds a number of user-friendly snippets
+      -- https://github.com/rafamadriz/friendly-snippets
       'rafamadriz/friendly-snippets',
     },
   },
 
   -- Useful plugin to show you pending keybinds.
+  -- https://github.com/folke/which-key.nvim
   { 'folke/which-key.nvim', opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
+    -- https://github.com/lewis6991/gitsigns.nvim
     'lewis6991/gitsigns.nvim',
     opts = {
       -- See `:help gitsigns.txt`
@@ -110,6 +131,7 @@ require('lazy').setup({
 
   {
     -- Set lualine as statusline
+    -- https://github.com/nvim-lualine/lualine.nvim
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     opts = {
@@ -124,6 +146,7 @@ require('lazy').setup({
 
   {
     -- Add indentation guides even on blank lines
+    -- https://github.com/lukas-reineke/indent-blankline.nvim
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
@@ -134,14 +157,17 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
+  -- https://github.com/numToStr/Comment.nvim
   { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
+  -- https://github.com/nvim-telescope/telescope.nvim
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
   -- requirements installed.
+  -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     -- NOTE: If you are having trouble with this installation,
@@ -154,19 +180,27 @@ require('lazy').setup({
 
   {
     -- Highlight, edit, and navigate code
+    -- https://github.com/nvim-treesitter/nvim-treesitter
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
+      -- https://github.com/nvim-treesitter/nvim-treesitter-text-objects
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
   },
    
   {
+    -- https://github.com/windwp/nvim-autopairs
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     opts = {} -- this is equalent to setup({}) function
   },
-
+  
+  -- AI Coding Assistant
+  -- https://github.com/github/copilot.vim
+  {
+     'github/copilot.vim'
+  }
   -- For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
 }, {})
@@ -239,7 +273,7 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 
 -- Map the 'Ex' command to Spacebar + f(ile) + t(ree).
 -- This will open netrw, which is the built in filetree.
-vim.keymap.set('n', '<leader>ft', vim.cmd.Ex)
+vim.keymap.set('n', '<leader>ft', vim.cmd.Ex, { desc = '[F]ile [T]ree' })
 
 -- Map CTRL+S to write the file when in Normal, Insert, or Visual mode.
 vim.keymap.set({'n', 'i', 'v'}, '<C-s>', '<cmd>w<cr>')
@@ -249,6 +283,10 @@ vim.keymap.set('n', '<C-h>', '<C-W>h')
 vim.keymap.set('n', '<C-j>', '<C-W>j')
 vim.keymap.set('n', '<C-k>', '<C-W>k')
 vim.keymap.set('n', '<C-l>', '<C-W>l')
+
+-- Map buffer navigation to Space + b + p/n
+vim.keymap.set('n', '<leader>bp', ':bprevious<cr>', { desc = '[B]uffer [P]revious' })
+vim.keymap.set('n', '<leader>bn', ':bnext<cr>', { desc = '[B]uffer [N]ext'} )
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -294,6 +332,8 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = '[S]earch [B]uffers' })
+
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
