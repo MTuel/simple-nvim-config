@@ -288,6 +288,9 @@ vim.keymap.set('n', '<C-l>', '<C-W>l')
 vim.keymap.set('n', '<leader>bp', ':bprevious<cr>', { desc = '[B]uffer [P]revious' })
 vim.keymap.set('n', '<leader>bn', ':bnext<cr>', { desc = '[B]uffer [N]ext'} )
 
+-- Easy activation of Markdown Preview
+vim.keymap.set('n', '<leader>mp', ':MarkdownPreview<cr>', { desc = '[M]arkdown [P]review'})
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })

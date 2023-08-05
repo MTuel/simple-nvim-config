@@ -16,7 +16,7 @@ Here are some resources (in no particular order) I used in putting this together
 
 - [Turn VIM into a full featured IDE with only one command](https://www.youtube.com/watch?v=Mtgo-nP_r8Y)
 
-## Requirements (WIP)
+## Requirements
 
 ### [Pandoc](https://pandoc.org/)
 
@@ -34,11 +34,11 @@ Here are some resources (in no particular order) I used in putting this together
 
     - [NPM](https://nodejs.org/en/download) ```npm install -g @compodoc/live-server```
 
-## Remaps (WIP)
+### [mingw](https://www.mingw-w64.org/)
 
-```Ctrl+S = :w```
+- Used for [telescope-nvim-fzf-native](https://github.com/nvim-telescope/telescope-fzf-native.nvim) and [mason.nvim](https://github.com/williamboman/mason.nvim)
 
-```Leader + f(ile) + t(ree)``` opens up netrw.
+    - ```choco install mingw```
 
 ## Plugins (WIP)
 
@@ -59,7 +59,15 @@ Here are some resources (in no particular order) I used in putting this together
 
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
     
-    - Configs for the Nvim LSP Client.
+    - Configs for the Neovim LSP Client.
+
+- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+
+- [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
+
+- [Comment.nvim](https://github.com/numToStr/Comment.nvim)
+
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
 - [which-key.nvim](https://github.com/folke/which-key.nvim)
 
@@ -72,3 +80,15 @@ Here are some resources (in no particular order) I used in putting this together
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 
     - Customizeable status line.
+
+- [vim-sleuth](https://github.com/tpope/vim-sleuth)
+
+- [vim-fugitive](https://github.com/tpope/vim-fugitive)
+
+- [vim-rhubarb](https://github.com/tpope/vim-rhubarb)
+
+- [vim-razor](https://github.com/jlcrochet/vim-razor)
+
+- [copilot.vim](https://github.com/github/copilot.vim)
+
+- [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
