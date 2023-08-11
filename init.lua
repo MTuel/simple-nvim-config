@@ -196,6 +196,12 @@ require('lazy').setup({
     opts = {} -- this is equalent to setup({}) function
   },
   
+  -- NeoTerm for Terminal Mode
+  -- https://github.com/nyngwang/NeoTerm.lua
+  {
+    'nyngwang/NeoTerm.lua'
+  },
+
   -- AI Coding Assistant
   -- https://github.com/github/copilot.vim
   {
@@ -549,5 +555,12 @@ cmp.setup {
   },
 }
 
+require('neo-term').setup {
+  exclude_filetypes = { 'oil' },
+}
+
+vim.keymap.set('n', '<leader>tt', ':NeoTermToggle<cr>', { desc = '[T]oggle [T]erminal Buffer' } )
+vim.keymap.set('t', '<leader>tt', ':NeoTermEnterNormal<cr>', { desc = '[T]oggle [T]erminal Buffer' } )
+vim.keymap.set('t', '<ESC>', '<C-\\><C-n>')
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
