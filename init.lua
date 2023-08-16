@@ -31,7 +31,10 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
-  -- # THEME #
+  --
+  -- # THEME & VISUAL #
+  --
+
 	-- Catppuccin Mocha.
   -- https://github.com/catppuccin/nvim
 	{
@@ -40,22 +43,104 @@ require('lazy').setup({
 		priority = 1000
 	},
 
+  {
+    -- Set lualine as statusline
+    -- https://github.com/nvim-lualine/lualine.nvim
+    'nvim-lualine/lualine.nvim',
+    -- See `:help lualine.txt`
+    opts = {
+      options = {
+        icons_enabled = false,
+        theme = 'onedark',
+        component_separators = '|',
+        section_separators = '',
+      },
+    },
+  },
+  
+  {
+    -- Add indentation guides even on blank lines
+    -- https://github.com/lukas-reineke/indent-blankline.nvim
+    'lukas-reineke/indent-blankline.nvim',
+    -- Enable `lukas-reineke/indent-blankline.nvim`
+    -- See `:help indent_blankline.txt`
+    opts = {
+      char = '┊',
+      show_trailing_blankline_indent = false,
+    },
+  },
+
+  -- Useful plugin to show you pending keybinds.
+  -- https://github.com/folke/which-key.nvim
+  { 'folke/which-key.nvim', opts = {} },
+
+  --
+  -- # TWEAKS & ADDITIONAL FEATURES #
+  --
+
+  -- Detect tabstop and shiftwidth automatically
+  -- https://github.com/tpope/vim-sleuth
+  'tpope/vim-sleuth',
+
+  -- "gc" to comment visual regions/lines
+  -- https://github.com/numToStr/Comment.nvim
+  { 'numToStr/Comment.nvim', opts = {} },
+
   -- Plugin for previewing markdown files.
   -- https://github.com/davidgranstrom/nvim-markdown-preview
 	{
 		'davidgranstrom/nvim-markdown-preview'
   },
-  
-  -- Git related plugins
+
+  {
+    -- https://github.com/windwp/nvim-autopairs
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    opts = {} -- this is equalent to setup({}) function
+  },
+
+  -- NeoTerm for Terminal Mode
+  -- https://github.com/nyngwang/NeoTerm.lua
+  {
+    'nyngwang/NeoTerm.lua'
+  },
+
+  -- AI Coding Assistant
+  -- https://github.com/github/copilot.vim
+  {
+     'github/copilot.vim'
+  },
+
+  --
+  -- # GIT RELATED PLUGINS #
+  --
+
   -- https://github.com/tpope/vim-fugitive
   'tpope/vim-fugitive',
   -- https://github.com/tpope/vim-rhubarb
   'tpope/vim-rhubarb',
 
-  -- Detect tabstop and shiftwidth automatically
-  -- https://github.com/tpope/vim-sleuth
-  'tpope/vim-sleuth',
-  
+  {
+    -- Adds git related signs to the gutter, as well as utilities for managing changes
+    -- https://github.com/lewis6991/gitsigns.nvim
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      -- See `:help gitsigns.txt`
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      },
+      on_attach = function(bufnr)
+        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+        vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
+        vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
+      end,
+    },
+  },
+
   -- Syntax Highlighting for .razor files
   -- https://github.com/jlcrochet/vim-razor
   'jlcrochet/vim-razor',
@@ -105,61 +190,6 @@ require('lazy').setup({
     },
   },
 
-  -- Useful plugin to show you pending keybinds.
-  -- https://github.com/folke/which-key.nvim
-  { 'folke/which-key.nvim', opts = {} },
-  {
-    -- Adds git related signs to the gutter, as well as utilities for managing changes
-    -- https://github.com/lewis6991/gitsigns.nvim
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      -- See `:help gitsigns.txt`
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-      on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
-        vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
-        vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
-      end,
-    },
-  },
-
-  {
-    -- Set lualine as statusline
-    -- https://github.com/nvim-lualine/lualine.nvim
-    'nvim-lualine/lualine.nvim',
-    -- See `:help lualine.txt`
-    opts = {
-      options = {
-        icons_enabled = false,
-        theme = 'onedark',
-        component_separators = '|',
-        section_separators = '',
-      },
-    },
-  },
-
-  {
-    -- Add indentation guides even on blank lines
-    -- https://github.com/lukas-reineke/indent-blankline.nvim
-    'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help indent_blankline.txt`
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-    },
-  },
-
-  -- "gc" to comment visual regions/lines
-  -- https://github.com/numToStr/Comment.nvim
-  { 'numToStr/Comment.nvim', opts = {} },
-
   -- Fuzzy Finder (files, lsp, etc)
   -- https://github.com/nvim-telescope/telescope.nvim
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
@@ -188,26 +218,15 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
-   
-  {
-    -- https://github.com/windwp/nvim-autopairs
-    'windwp/nvim-autopairs',
-    event = "InsertEnter",
-    opts = {} -- this is equalent to setup({}) function
-  },
-  
-  -- AI Coding Assistant
-  -- https://github.com/github/copilot.vim
-  {
-     'github/copilot.vim'
-  }
+
   -- For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
 }, {})
 
+
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
--- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -552,5 +571,12 @@ cmp.setup {
   },
 }
 
+require('neo-term').setup {
+  exclude_filetypes = { 'oil' },
+}
+
+vim.keymap.set('n', '<leader>tt', ':NeoTermToggle<cr>', { desc = '[T]oggle [T]erminal Buffer' } )
+vim.keymap.set('t', '<leader>tt', ':NeoTermEnterNormal<cr>', { desc = '[T]oggle [T]erminal Buffer' } )
+vim.keymap.set('t', '<ESC>', '<C-\\><C-n>')
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
