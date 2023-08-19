@@ -99,10 +99,12 @@ require('lazy').setup({
     opts = {} -- this is equalent to setup({}) function
   },
 
-  -- NeoTerm for Terminal Mode
-  -- https://github.com/nyngwang/NeoTerm.lua
+  -- ToggleTerm for Terminal Mode
+  -- https://github.com/akinsho/toggleterm.nvim
   {
-    'nyngwang/NeoTerm.lua'
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    config = true
   },
 
   -- AI Coding Assistant
@@ -294,14 +296,11 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- This will open netrw, which is the built in filetree.
 vim.keymap.set('n', '<leader>ft', vim.cmd.Ex, { desc = '[F]ile [T]ree' })
 
--- Map CTRL+S to write the file when in Normal, Insert, or Visual mode.
-vim.keymap.set({'n', 'i', 'v'}, '<C-s>', '<cmd>w<cr>')
-
 -- Map window navigation to just CTRL + h/j/k/l
-vim.keymap.set('n', '<C-h>', '<C-W>h')
-vim.keymap.set('n', '<C-j>', '<C-W>j')
-vim.keymap.set('n', '<C-k>', '<C-W>k')
-vim.keymap.set('n', '<C-l>', '<C-W>l')
+vim.keymap.set({'n', 't'}, '<C-h>', '<C-W>h')
+vim.keymap.set({'n', 't'}, '<C-j>', '<C-W>j')
+vim.keymap.set({'n', 't'}, '<C-k>', '<C-W>k')
+vim.keymap.set({'n', 't'}, '<C-l>', '<C-W>l')
 
 -- Map buffer navigation to Space + b + p/n
 vim.keymap.set('n', '<leader>bp', ':bprevious<cr>', { desc = '[B]uffer [P]revious' })
@@ -309,6 +308,14 @@ vim.keymap.set('n', '<leader>bn', ':bnext<cr>', { desc = '[B]uffer [N]ext'} )
 
 -- Easy activation of Markdown Preview
 vim.keymap.set('n', '<leader>mp', ':MarkdownPreview<cr>', { desc = '[M]arkdown [P]review'})
+
+-- [[Heretical Keymaps]]
+
+-- Map CTRL+S to write the file when in Normal, Insert, or Visual mode.
+vim.keymap.set({'n', 'i', 'v'}, '<C-s>', '<cmd>w<cr>')
+
+-- Map CTRL+Z to undo in Insert mode
+vim.keymap.set('i', '<C-z>', '<cmd>u<cr>')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -571,12 +578,24 @@ cmp.setup {
   },
 }
 
-require('neo-term').setup {
-  exclude_filetypes = { 'oil' },
-}
+require('toggleterm').setup({
+  hide_numbers = true,
+  shade_terminals = true,
+  start_in_insert = true,
+  size = function(term)
+    if term.direction == 'horizontal' then
+      return 20
+    elseif term.direction == 'vertical' then
+      return vim.o.columns * 0.5
+    end
+  end
+})
 
-vim.keymap.set('n', '<leader>tt', ':NeoTermToggle<cr>', { desc = '[T]oggle [T]erminal Buffer' } )
-vim.keymap.set('t', '<leader>tt', ':NeoTermEnterNormal<cr>', { desc = '[T]oggle [T]erminal Buffer' } )
 vim.keymap.set('t', '<ESC>', '<C-\\><C-n>')
+vim.keymap.set('n', '<leader>th', '<CMD>ToggleTerm direction=horizontal<CR>', { desc = '[T]oggleTerm Horizontal'})
+vim.keymap.set('n', '<leader>tv', '<CMD>ToggleTerm direction=vertical<CR>', { desc = '[T]oggleTerm Vertical'})
+vim.keymap.set('n', '<leader>tf', '<CMD>ToggleTerm direction=float<CR>', { desc = '[T]oggleTerm Float'})
+vim.keymap.set('n', '<leader>tt', '<CMD>ToggleTerm direction=tab<CR>', { desc = '[T]oggleTerm Tab'})
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
