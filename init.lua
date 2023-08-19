@@ -7,6 +7,10 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Install package manager
 -- https://github.com/folke/lazy.nvim
 -- `:help lazy.nvim.txt` for more info
@@ -105,6 +109,10 @@ require('lazy').setup({
     'akinsho/toggleterm.nvim',
     version = '*',
     config = true
+  },
+
+  {
+    'nvim-tree/nvim-tree.lua',
   },
 
   -- AI Coding Assistant
@@ -292,10 +300,6 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- Map the 'Ex' command to Spacebar + f(ile) + t(ree).
--- This will open netrw, which is the built in filetree.
-vim.keymap.set('n', '<leader>ft', vim.cmd.Ex, { desc = '[F]ile [T]ree' })
-
 -- Map window navigation to just CTRL + h/j/k/l
 vim.keymap.set({'n', 't'}, '<C-h>', '<C-W>h')
 vim.keymap.set({'n', 't'}, '<C-j>', '<C-W>j')
@@ -327,6 +331,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+require("nvim-tree").setup()
+
+vim.keymap.set('n', '<leader>ft', ':NvimTreeToggle<CR>', { desc = '[F]ile [T]ree' })
+vim.keymap.set('n', '<leader>ff', ':NvimTreeFindFile<CR>', { desc = '[F]ile [F]ind' })
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
@@ -592,10 +601,10 @@ require('toggleterm').setup({
 })
 
 vim.keymap.set('t', '<ESC>', '<C-\\><C-n>')
-vim.keymap.set('n', '<leader>th', '<CMD>ToggleTerm direction=horizontal<CR>', { desc = '[T]oggleTerm Horizontal'})
-vim.keymap.set('n', '<leader>tv', '<CMD>ToggleTerm direction=vertical<CR>', { desc = '[T]oggleTerm Vertical'})
-vim.keymap.set('n', '<leader>tf', '<CMD>ToggleTerm direction=float<CR>', { desc = '[T]oggleTerm Float'})
-vim.keymap.set('n', '<leader>tt', '<CMD>ToggleTerm direction=tab<CR>', { desc = '[T]oggleTerm Tab'})
+vim.keymap.set('n', '<leader>th', '<CMD>ToggleTerm direction=horizontal<CR>', { desc = '[T]oggleTerm [H]orizontal'})
+vim.keymap.set('n', '<leader>tv', '<CMD>ToggleTerm direction=vertical<CR>', { desc = '[T]oggleTerm [V]ertical'})
+vim.keymap.set('n', '<leader>tf', '<CMD>ToggleTerm direction=float<CR>', { desc = '[T]oggleTerm [F]loat'})
+vim.keymap.set('n', '<leader>tt', '<CMD>ToggleTerm direction=tab<CR>', { desc = '[T]oggleTerm [T]ab'})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
