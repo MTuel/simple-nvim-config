@@ -61,7 +61,7 @@ require('lazy').setup({
       },
     },
   },
-  
+
   {
     -- Add indentation guides even on blank lines
     -- https://github.com/lukas-reineke/indent-blankline.nvim
@@ -154,9 +154,7 @@ require('lazy').setup({
   -- Syntax Highlighting for .razor files
   -- https://github.com/jlcrochet/vim-razor
   { 'jlcrochet/vim-razor' },
-  
-  { 'omnisharp/omnisharp-vim' },
-  
+
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -507,6 +505,11 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+
+  omnisharp =
+  {
+
+  },
 
   lua_ls = {
     Lua = {
