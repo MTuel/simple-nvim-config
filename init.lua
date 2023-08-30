@@ -115,6 +115,12 @@ require('lazy').setup({
     'nvim-tree/nvim-tree.lua',
   },
 
+  {
+     "m4xshen/hardtime.nvim",
+     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+     opts = {}
+  },
+
   -- AI Coding Assistant
   -- https://github.com/github/copilot.vim
   {
@@ -332,6 +338,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+require('hardtime').setup {
+  restriction_mode = 'hint',
+  disabled_keys = { },
+}
+
 require("nvim-tree").setup()
 
 vim.keymap.set('n', '<leader>ft', ':NvimTreeToggle<CR>', { desc = '[F]ile [T]ree' })
@@ -508,7 +519,7 @@ local servers = {
 
   omnisharp =
   {
-
+    filetypes = { 'cs', 'cshtml', 'razor' },
   },
 
   lua_ls = {
