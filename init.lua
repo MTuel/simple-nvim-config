@@ -7,10 +7,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Disable netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- Install package manager
 -- https://github.com/folke/lazy.nvim
 -- `:help lazy.nvim.txt` for more info
@@ -63,6 +59,14 @@ require('lazy').setup({
   },
 
   {
+    'goolord/alpha-nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.theta'.config)
+    end
+  },
+
+  {
     -- Add indentation guides even on blank lines
     -- https://github.com/lukas-reineke/indent-blankline.nvim
     'lukas-reineke/indent-blankline.nvim',
@@ -109,10 +113,6 @@ require('lazy').setup({
     'akinsho/toggleterm.nvim',
     version = '*',
     config = true
-  },
-
-  {
-    'nvim-tree/nvim-tree.lua',
   },
 
   -- AI Coding Assistant
@@ -233,44 +233,7 @@ require('lazy').setup({
   -- { import = 'custom.plugins' },
 }, {})
 
-
-
--- [[ Setting options ]]
--- See `:help vim.o`
-
--- Set highlight on search
-vim.o.hlsearch = false
-
--- Make line numbers default
-vim.wo.number = true
-
--- Enable mouse mode
-vim.o.mouse = 'a'
-
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
-
--- Enable break indent
-vim.o.breakindent = true
-
--- Save undo history
-vim.o.undofile = true
-
--- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
-
--- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+require('config.options')
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
@@ -295,6 +258,8 @@ require('catppuccin').setup({
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+vim.keymap.set('i', 'jk', '<ESC>', { silent = true, noremap = true })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -331,11 +296,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
-
-require("nvim-tree").setup()
-
-vim.keymap.set('n', '<leader>ft', ':NvimTreeToggle<CR>', { desc = '[F]ile [T]ree' })
-vim.keymap.set('n', '<leader>ff', ':NvimTreeFindFile<CR>', { desc = '[F]ile [F]ind' })
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
@@ -377,7 +337,22 @@ vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc =
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c_sharp', 'css', 'html', 'java', 'javascript', 'json', 'latex', 'lua', 'markdown', 'markdown_inline', 'python', 'tsx', 'typescript', 'vimdoc', 'vim' },
+  ensure_installed = {
+    'c_sharp',
+    'css',
+    'html',
+    'javascript',
+    'json',
+    'latex',
+    'lua',
+    'markdown',
+    'markdown_inline',
+    'python',
+    'tsx',
+    'typescript',
+    'vimdoc',
+    'vim'
+  },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
@@ -508,7 +483,10 @@ local servers = {
 
   omnisharp =
   {
-    filetypes = { 'cs', 'cshtml', 'razor' },
+    enable_roslyn_analysers = true,
+    enable_import_completion = true,
+    enable_decompilation_support = true,
+    organize_imports_on_format = true,
   },
 
   lua_ls = {
