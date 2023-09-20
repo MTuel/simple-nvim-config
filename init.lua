@@ -234,6 +234,10 @@ require('catppuccin').setup({
   }
 })
 
+
+-- Easy activation of Markdown Preview
+vim.keymap.set('n', '<leader>mp', ':MarkdownPreview<cr>', { desc = '[M]arkdown [P]review'})
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -531,7 +535,6 @@ require('toggleterm').setup({
   end
 })
 
-vim.keymap.set('t', '<ESC>', '<C-\\><C-n>')
 vim.keymap.set('n', '<leader>th', '<CMD>ToggleTerm direction=horizontal<CR>', { desc = '[T]oggleTerm [H]orizontal'})
 vim.keymap.set('n', '<leader>tv', '<CMD>ToggleTerm direction=vertical<CR>', { desc = '[T]oggleTerm [V]ertical'})
 vim.keymap.set('n', '<leader>tf', '<CMD>ToggleTerm direction=float<CR>', { desc = '[T]oggleTerm [F]loat'})
