@@ -1,13 +1,9 @@
--- Started with kickstart.nvim before splitting the config into multiple files.
--- Thanks to TJ DeVries
-
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
 -- Install package manager
@@ -37,203 +33,46 @@ require('lazy').setup({
   --
   -- # THEME & VISUAL #
   --
-
+  require('plugins.alpha'),
   require('plugins.catppuccin'),
+  require('plugins.indent-blankline'),
   require('plugins.lualine'),
-
-  {
-    'goolord/alpha-nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function ()
-        require'alpha'.setup(require'alpha.themes.theta'.config)
-    end
-  },
-
-  {
-    -- Add indentation guides even on blank lines
-    -- https://github.com/lukas-reineke/indent-blankline.nvim
-    'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help indent_blankline.txt`
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-    },
-  },
-
-  -- Useful plugin to show you pending keybinds.
-  -- https://github.com/folke/which-key.nvim
-  { 'folke/which-key.nvim', opts = {} },
+  require('plugins.which-key'),
 
   --
   -- # TWEAKS & ADDITIONAL FEATURES #
   --
-
-  -- Detect tabstop and shiftwidth automatically
-  -- https://github.com/tpope/vim-sleuth
-  'tpope/vim-sleuth',
-
-  -- "gc" to comment visual regions/lines
-  -- https://github.com/numToStr/Comment.nvim
-  { 'numToStr/Comment.nvim', opts = {} },
-
-  -- Plugin for previewing markdown files.
-  -- https://github.com/davidgranstrom/nvim-markdown-preview
-	{
-		'davidgranstrom/nvim-markdown-preview'
-  },
-
-  {
-    -- https://github.com/windwp/nvim-autopairs
-    'windwp/nvim-autopairs',
-    event = "InsertEnter",
-    opts = {} -- this is equalent to setup({}) function
-  },
-
-  -- ToggleTerm for Terminal Mode
-  -- https://github.com/akinsho/toggleterm.nvim
-  {
-    'akinsho/toggleterm.nvim',
-    version = '*',
-    config = true
-  },
-
-  -- AI Coding Assistant
-  -- https://github.com/github/copilot.vim
-  {
-     'github/copilot.vim'
-  },
+  require('plugins.vim-sleuth'),
+  require('plugins.comment'),
+  require('plugins.markdown-preview'),
+  require('plugins.nvim-autopairs'),
+  require('plugins.toggleterm'),
+  require('plugins.copilot'),
+  require('plugins.vim-razor'),
 
   --
   -- # GIT RELATED PLUGINS #
   --
 
-  -- https://github.com/tpope/vim-fugitive
-  'tpope/vim-fugitive',
-  -- https://github.com/tpope/vim-rhubarb
-  'tpope/vim-rhubarb',
+  require('plugins.vim-fugitive'),
+  require('plugins.vim-rhubarb'),
+  require('plugins.gitsigns'),
 
-  {
-    -- Adds git related signs to the gutter, as well as utilities for managing changes
-    -- https://github.com/lewis6991/gitsigns.nvim
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      -- See `:help gitsigns.txt`
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-      on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
-        vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
-        vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
-      end,
-    },
-  },
+  --
+  -- # LSP PLUGINS #
+  --
 
-  -- Syntax Highlighting for .razor files
-  -- https://github.com/jlcrochet/vim-razor
-  { 'jlcrochet/vim-razor' },
-
-  -- NOTE: This is where your plugins related to LSP can be installed.
-  --  The configuration is done below. Search for lspconfig to find it below.
-  {
-    -- LSP Configuration & Plugins
-    -- https://github.com/neovim/nvim-lspconfig
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
-      -- https://github.com/williamboman/mason.nvim
-      { 'williamboman/mason.nvim', config = true },
-      -- https://github.com/williamboman/mason-lspconfig.nvim
-      'williamboman/mason-lspconfig.nvim',
-
-      -- Useful status updates for LSP
-      -- https://github.com/j-hui/fidget.nvim
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
-
-      -- Additional lua configuration, makes nvim stuff amazing!
-      -- https://github.com/folke/folke
-      'folke/neodev.nvim',
-    },
-  },
-
-  {
-    -- Autocompletion
-    -- https://github.com/hrsh7th/nvim-cmp
-    'hrsh7th/nvim-cmp',
-    dependencies = {
-      -- Snippet Engine & its associated nvim-cmp source
-      -- https://github.com/L3MON4D3/LuaSnip
-      'L3MON4D3/LuaSnip',
-      -- https://github.com/saadparwaiz1/cmp_luasnip
-      'saadparwaiz1/cmp_luasnip',
-
-      -- Adds LSP completion capabilities
-      -- https://github.com/hrsh7th/cmp-nvim-lsp
-      'hrsh7th/cmp-nvim-lsp',
-
-      -- Adds a number of user-friendly snippets
-      -- https://github.com/rafamadriz/friendly-snippets
-      'rafamadriz/friendly-snippets',
-    },
-  },
-
-  -- Fuzzy Finder (files, lsp, etc)
-  -- https://github.com/nvim-telescope/telescope.nvim
-  { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
-
-  -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-  -- Only load if `make` is available. Make sure you have the system
-  -- requirements installed.
-  -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    -- NOTE: If you are having trouble with this installation,
-    --       refer to the README for telescope-fzf-native for more instructions.
-    build = 'make',
-    cond = function()
-      return vim.fn.executable 'make' == 1
-    end,
-  },
-
-  {
-    -- Highlight, edit, and navigate code
-    -- https://github.com/nvim-treesitter/nvim-treesitter
-    'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      -- https://github.com/nvim-treesitter/nvim-treesitter-text-objects
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    build = ':TSUpdate',
-  },
-
-  -- For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
+  require('plugins.nvim-lspconfig'),
+  require('plugins.nvim-cmp'),
+  require('plugins.telescope'),
+  require('plugins.fzf-native'),
+  require('plugins.treesitter')
 }, {})
 
 require('config.options')
 require('config.keybinds')
 
 vim.cmd 'colorscheme catppuccin'
-
-require('catppuccin').setup({
-  integrations = {
-    cmp = true,
-    treesitter = true,
-    markdown = true,
-    mason = true,
-    telescope = {
-      enabled = true,
-    },
-    which_key = true,
-  }
-})
-
 
 -- Easy activation of Markdown Preview
 vim.keymap.set('n', '<leader>mp', ':MarkdownPreview<cr>', { desc = '[M]arkdown [P]review'})
