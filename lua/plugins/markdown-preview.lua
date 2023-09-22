@@ -3,5 +3,5 @@ return
 -- https://github.com/davidgranstrom/nvim-markdown-preview
 {
   'davidgranstrom/nvim-markdown-preview',
-  ft = 'md'
+  event = 'VeryLazy'
 }
