@@ -67,7 +67,11 @@ require('lazy').setup({
   require('plugins.nvim-cmp'),
   require('plugins.telescope'),
   require('plugins.fzf-native'),
-  require('plugins.treesitter')
+  require('plugins.treesitter'),
+
+  {
+    'OmniSharp/Omnisharp-vim'
+  }
 }, {})
 
 require('config.options')
@@ -127,21 +131,6 @@ end
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
-  omnisharp =
-  {
-    enable_roslyn_analysers = true,
-    enable_import_completion = true,
-    enable_decompilation_support = true,
-    organize_imports_on_format = true,
-  },
-
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -174,8 +163,6 @@ mason_lspconfig.setup_handlers {
     }
   end
 }
-
-
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
