@@ -22,14 +22,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- NOTE: Here is where you install your plugins.
---  You can configure plugins using the `config` key.
---
---  You can also configure plugins after the setup call,
---    as they will be available in your neovim runtime.
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
-
   --
   -- # THEME & VISUAL #
   --
@@ -38,7 +31,7 @@ require('lazy').setup({
   require('plugins.indent-blankline'),
   require('plugins.lualine'),
   require('plugins.which-key'),
-  require('plugins.shade'),
+  --require('plugins.shade'),
 
   --
   -- # TWEAKS & ADDITIONAL FEATURES #
@@ -49,12 +42,14 @@ require('lazy').setup({
   require('plugins.nvim-autopairs'),
   require('plugins.toggleterm'),
   --require('plugins.copilot'),
+  require('plugins.codeium'),
   require('plugins.vim-razor'),
+  require('plugins.oil'),
+  require('plugins.leap'),
 
   --
   -- # GIT RELATED PLUGINS #
   --
-
   require('plugins.vim-fugitive'),
   require('plugins.vim-rhubarb'),
   require('plugins.gitsigns'),
@@ -62,7 +57,6 @@ require('lazy').setup({
   --
   -- # LSP PLUGINS #
   --
-
   require('plugins.nvim-lspconfig'),
   require('plugins.nvim-cmp'),
   require('plugins.telescope'),
@@ -71,10 +65,6 @@ require('lazy').setup({
 
   {
     'OmniSharp/Omnisharp-vim'
-  },
-
-  {
-    'Exafunction/codeium.vim'
   }
 }, {})
 

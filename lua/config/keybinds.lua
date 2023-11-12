@@ -27,7 +27,7 @@ vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', { desc = '[B]uffer [P]reviou
 vim.keymap.set('n', '<leader>bn', ':bnext<CR>', { desc = '[B]uffer [N]ext'} )
 
 -- Quick activation of Netrw
-vim.keymap.set('n', '<leader>ft', ':Ex<CR>', {desc = '[F]ile [T]ree'})
+--vim.keymap.set('n', '<leader>ft', ':Ex<CR>', {desc = '[F]ile [T]ree'})
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
