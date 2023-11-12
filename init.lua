@@ -46,6 +46,7 @@ require('lazy').setup({
   require('plugins.vim-razor'),
   require('plugins.oil'),
   require('plugins.leap'),
+  require('plugins.surround'),
 
   --
   -- # GIT RELATED PLUGINS #
