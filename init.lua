@@ -35,7 +35,6 @@ require('lazy').setup({
   require('plugins.indent-blankline'),
   require('plugins.lualine'),
   require('plugins.which-key'),
-  --require('plugins.shade'),
 
   --
   -- # TWEAKS & ADDITIONAL FEATURES #
@@ -45,8 +44,7 @@ require('lazy').setup({
   require('plugins.markdown-preview'),
   require('plugins.nvim-autopairs'),
   require('plugins.toggleterm'),
-  --require('plugins.copilot'),
-  require('plugins.codeium'),
+  require('plugins.copilot'),
   require('plugins.vim-razor'),
   require('plugins.oil'),
   require('plugins.leap'),

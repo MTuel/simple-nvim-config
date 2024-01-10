@@ -16,6 +16,7 @@ return
       ensure_installed = {
         'c_sharp',
         'css',
+        'fennel',
         'html',
         'javascript',
         'json',
