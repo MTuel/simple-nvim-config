@@ -27,6 +27,7 @@
   ;; Theme Related Plugins
   (require :treesitter-config)
   (require :catppuccin-config)
+  (require :which-key-config)
 ] {
   :performance {
     :reset_packpath false
