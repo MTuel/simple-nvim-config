@@ -33,3 +33,6 @@
 
 ;; Set completeopt to have a better completion experience.
 (set vim.o.completeopt "menuone,noselect")
+
+(set vim.o.tabstop 2)
+(set vim.o.shiftwidth 2)

@@ -1,4 +1,4 @@
--- :fennel:1704936060
+-- :fennel:1704932448
 local package_config
 local function _1_()
   return vim.cmd.colorscheme("catppuccin-mocha")

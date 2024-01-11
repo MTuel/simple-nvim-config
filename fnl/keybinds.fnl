@@ -41,3 +41,21 @@
 		"v:count == 0 ? 'gj' : 'j'"
 		{ :silent true :expr true }
 		)
+
+(vim.keymap.set :n 
+		"<leader>ft"
+		":Ex<CR>"
+		{ :desc "[F]ile [T]ree" }
+		)
+
+(vim.keymap.set :n 
+		"<leader>bp"
+		":bprevious<CR>"
+		{ :desc "[B]uffer [P]revious" }
+		)
+
+(vim.keymap.set :n 
+		"<leader>bn"
+		":bnext<CR>"
+		{ :desc "[B]uffer [N]ext" }
+		)

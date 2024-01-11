@@ -1,4 +1,4 @@
--- :fennel:1704936060
+-- :fennel:1704945133
 vim.o.termguicolors = true
 vim.o.hlsearch = false
 vim.wo.number = true
@@ -11,4 +11,6 @@ vim.wo.signcolumn = "yes"
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 vim.o.completeopt = "menuone,noselect"
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
 return nil

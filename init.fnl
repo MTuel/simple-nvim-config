@@ -29,8 +29,10 @@
   (require :catppuccin-config)
   (require :which-key-config)
 
+  ;;:tpope/vim-sleuth
+
   (require :lsp-plugins)
-  (require :nvim-cmp-config)
+  ;;(require :nvim-cmp-config)
 ] {
   :performance {
     :reset_packpath false

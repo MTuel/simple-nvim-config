@@ -1,8 +1,7 @@
 (fn on-attach [_ bufnr]
-       (fn nmap [keys func desc]
-	 (if (desc)
-	     (desc (.. "LSP: " desc)))
-	
+  (fn nmap [keys func desc]
+		(if (desc)
+	  	(desc (.. "LSP: " desc)))	
 	(vim.keymap.set [
 			:n
 			keys
@@ -15,16 +14,33 @@
 	(nmap ["<leader>rn" vim.lsp.buf.rename "[R]e[n]ame"])
 	(nmap ["<leader>ca" vim.lsp.buf.code_action "[C]ode [A]ction"])
 
-	(nmap ["<leader>gd" vim.lsp.buf.definition "[G]oto [D]efinition"])
-	))	
+	(nmap ["<leader>gd" vim.lsp.buf.definition "[G]oto [D]efinition"])))	
+
+
+(local servers {
+		:lua_ls {
+			:Lua {
+				:workspace { :checkThirdParty false }
+				:telemetry { :enable false }}}
+		:fennel_language_server { }})
 
 (local neodev (require :neodev))
 
 (neodev.setup)
 
-;;(var capabilities vim.lsp.protocol.make_client_capabilities)
+(local capabilities vim.lsp.protocol.make_client_capabilities)
 
-;;(local cmp-nvim-lsp (require :cmp_nvim_lsp))
+(local mason_lspconfig (require :mason-lspconfig))
 
-;;(set capabilities (cmp-nvim-lsp.default_capabilities capabilities)) 
+(mason_lspconfig.setup {
+	:ensure_installed (vim.tbl_keys servers)})
 
+(mason_lspconfig.setup_handlers {
+	(fn [server-name]
+		((. (require :lspconfig) server-name) :setup) {
+			:capabilities (capabilities)
+			:on_attach (on_attach)
+			:settings (. servers server-name)
+			:filetypes (or (. servers server_name) filetypes)
+		})
+})

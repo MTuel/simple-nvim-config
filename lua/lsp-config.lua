@@ -1,4 +1,4 @@
--- :fennel:1704940819
+-- :fennel:1704948885
 local function on_attach(_, bufnr)
   local function nmap(keys, func, desc)
     if desc() then
@@ -12,5 +12,9 @@ local function on_attach(_, bufnr)
   end
   return nmap
 end
+local servers = {lua_ls = {Lua = {workspace = {checkThirdParty = false}, telemetry = {enable = false}}}, fennel_language_server = {}}
 local neodev = require("neodev")
-return neodev.setup()
+neodev.setup()
+local capabilities = vim.lsp.protocol.make_client_capabilities
+local mason_lspconfig = require("mason-lspconfig")
+return mason_lspconfig.setup({ensure_installed = vim.tbl_keys(servers)})
