@@ -1,3 +1,3 @@
--- :fennel:1704933724
+-- :fennel:1704936060
 local plugin_config = {"folke/which-key.nvim", opts = {}}
 return plugin_config

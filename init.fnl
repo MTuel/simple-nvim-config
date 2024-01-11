@@ -28,10 +28,15 @@
   (require :treesitter-config)
   (require :catppuccin-config)
   (require :which-key-config)
+
+  (require :lsp-plugins)
+  (require :nvim-cmp-config)
 ] {
   :performance {
     :reset_packpath false
   }
 })
+
+(require :lsp-config)
 
 nil

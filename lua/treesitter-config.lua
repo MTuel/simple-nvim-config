@@ -1,4 +1,4 @@
--- :fennel:1704927212
+-- :fennel:1704936060
 local treesitter_config
 local function _1_()
   local config = require("nvim-treesitter.configs")
