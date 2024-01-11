@@ -1,4 +1,5 @@
--- :fennel:1704852763
+-- :fennel:1704933074
+vim.o.termguicolors = true
 vim.o.hlsearch = false
 vim.wo.number = true
 vim.o.mouse = "a"

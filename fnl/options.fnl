@@ -1,5 +1,8 @@
 ;; See ':help'
 
+;; Necessary on *nix platforms, not so much on windows it seems.
+(set vim.o.termguicolors true)
+
 ;; Set highlight on search.
 (set vim.o.hlsearch false)
 
