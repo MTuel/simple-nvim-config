@@ -2,8 +2,6 @@
 (require :options)
 (require :keybinds)
 
-
-
 ;; Bootstrap Lazy
 (local lazypath (.. (vim.fn.stdpath "data") "/lazy/lazy.nvim"))
 

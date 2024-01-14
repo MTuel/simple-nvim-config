@@ -1,4 +1,4 @@
--- :fennel:1705207545
+-- :fennel:1705236943
 require("options")
 require("keybinds")
 local lazypath = (vim.fn.stdpath("data") .. "/lazy/lazy.nvim")
