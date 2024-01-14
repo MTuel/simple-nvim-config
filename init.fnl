@@ -25,6 +25,7 @@
   :udayvir-singh/tangerine.nvim
 
   ;; Theme Related Plugins
+	(require :alpha-config)
   (require :treesitter-config)
   (require :catppuccin-config)
   (require :which-key-config)

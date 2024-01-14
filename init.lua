@@ -23,7 +23,7 @@ bootstrap("https://github.com/udayvir-singh/tangerine.nvim")
 
 require "tangerine".setup {
   compiler = {
-    verbose = true,
+    verbose = false,
     hooks = { "onsave", "oninit" }
   }
 }
