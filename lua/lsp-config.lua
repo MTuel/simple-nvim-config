@@ -1,4 +1,4 @@
--- :fennel:1704948885
+-- :fennel:1705209601
 local function on_attach(_, bufnr)
   local function nmap(keys, func, desc)
     if desc() then
@@ -17,4 +17,8 @@ local neodev = require("neodev")
 neodev.setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities
 local mason_lspconfig = require("mason-lspconfig")
-return mason_lspconfig.setup({ensure_installed = vim.tbl_keys(servers)})
+mason_lspconfig.setup({ensure_installed = vim.tbl_keys(servers)})
+local function _2_(server_name)
+  return require("lspconfig")[server_name].setup({capabilities = capabilities(), on_attach = on_attach(), settings = servers[server_name], filetypes = (servers[server_name] or {}).filetypes})
+end
+return mason_lspconfig.setup_handlers({_2_})

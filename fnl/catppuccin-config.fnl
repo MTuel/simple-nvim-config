@@ -5,5 +5,4 @@
 	:config (fn [] (vim.cmd.colorscheme "catppuccin-mocha"))
 	})
 
-
 package-config

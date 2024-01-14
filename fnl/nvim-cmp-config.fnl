@@ -4,7 +4,8 @@
   :dependencies [
 
     ;; Snippet Engine
-    :L3MON4D3/LuaSnip
+		;; WARNING: Currently Broken.
+    ;;:L3MON4D3/LuaSnip
 
     :saadparwaiz1/cmp_luasnip
 
@@ -14,16 +15,16 @@
   ]
   :config (fn []
     (local cmp (require :cmp))
-    (local luasnip (require :luasnip))
+    ;;(local luasnip (require :luasnip))
 
-    ((. (require :luasnip.loaders.from_vscode) :lazy_load))
-    (luasnip.config.setup {})
+    ;;((. (require :luasnip.loaders.from_vscode) :lazy_load))
+    ;;(luasnip.config.setup {})
 
     (cmp.setup {
-      :snippet {
-				:expand (fn [args]
-					(luasnip.lsp_expand args.body))
-			}
+      ;;:snippet {
+				;;:expand (fn [args]
+					;;(luasnip.lsp_expand args.body))
+			;;}
 			:mapping (cmp.mapping.preset.insert {
 					"<C-n>" (cmp.mapping.select_next_item)
 					"<C-p>" (cmp.mapping.select_prev_item)
@@ -37,16 +38,16 @@
 					"<Tab>" (cmp.mapping (fn [fallback]
 						(if (cmp.visible)
 								(cmp.select_next_item)
-								(luasnip.expand_or_locally_jumpable)
-								(luasnip.expand_or_jump)
+								;;(luasnip.expand_or_locally_jumpable)
+								;;(luasnip.expand_or_jump)
 								(fallback))
 						)
 						[ :i :s ])
 					"<S-Tab>" (cmp.mapping (fn [fallback]
 						(if (cmp.visible)
 								(cmp.select_prev_item)
-								(luasnip.expand_or_locally_jumpable (- 1))
-								(luasnip.jump (- 1))
+								;;(luasnip.expand_or_locally_jumpable (- 1))
+								;;(luasnip.jump (- 1))
 								(fallback))
 						)
 						[ :i :s ])			

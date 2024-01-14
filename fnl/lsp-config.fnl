@@ -36,11 +36,12 @@
 	:ensure_installed (vim.tbl_keys servers)})
 
 (mason_lspconfig.setup_handlers {
+(mason_lspconfig.setup_handlers [
 	(fn [server-name]
-		((. (require :lspconfig) server-name) :setup) {
+		((. (. (require :lspconfig) server-name) :setup) {
 			:capabilities (capabilities)
-			:on_attach (on_attach)
+			:on_attach (on-attach)
 			:settings (. servers server-name)
-			:filetypes (or (. servers server_name) filetypes)
-		})
-})
+			:filetypes (. (or (. servers server-name) {}) :filetypes)
+		}))
+])

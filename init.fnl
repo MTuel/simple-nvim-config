@@ -2,6 +2,8 @@
 (require :options)
 (require :keybinds)
 
+
+
 ;; Bootstrap Lazy
 (local lazypath (.. (vim.fn.stdpath "data") "/lazy/lazy.nvim"))
 
@@ -32,13 +34,14 @@
   ;;:tpope/vim-sleuth
 
   (require :lsp-plugins)
-  ;;(require :nvim-cmp-config)
+  (require :nvim-cmp-config)
 ] {
   :performance {
     :reset_packpath false
   }
 })
 
+;; Post Lazy plugin configuration.
 (require :lsp-config)
 
 nil
