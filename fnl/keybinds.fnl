@@ -11,7 +11,7 @@
 
 ;; Remap temrinal escape sequences to ESC.
 (vim.keymap.set :t 
-		"jk"
+		"<ESC>"
 		"<C-\\><C-n>"
 		{ :silent true :noremap true }
 		)
@@ -19,7 +19,7 @@
 ;; Remap 'jk' for ergonimics.
 (vim.keymap.set :i 
 		"jk"
-		"<Esc>"
+		"<ESC>"
 		{ :silent true :noremap true }
 		)
 ;; 'jk' in the terminal mode.
@@ -42,11 +42,11 @@
 		{ :silent true :expr true }
 		)
 
-(vim.keymap.set :n 
-		"<leader>ft"
-		":Ex<CR>"
-		{ :desc "[F]ile [T]ree" }
-		)
+;;(vim.keymap.set :n 
+;;		"<leader>ft"
+;;		":Ex<CR>"
+;;		{ :desc "[F]ile [T]ree" }
+;;		)
 
 (vim.keymap.set :n 
 		"<leader>bp"

@@ -14,6 +14,7 @@
 		   "--branch=stable"
 		   lazypath
 		   ]))
+       
 (vim.opt.rtp:prepend lazypath)
 
 (local lazy (require :lazy))
@@ -32,7 +33,11 @@
 
   ;;:tpope/vim-sleuth
 
+  (require :oil-config)
+  (require :toggleterm-config)
   (require :lsp-plugins)
+  (require :telescope-config)
+  (require :fzf-config)
   (require :nvim-cmp-config)
 ] {
   :performance {

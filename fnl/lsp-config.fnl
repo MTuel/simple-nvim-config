@@ -6,11 +6,11 @@
   (nmap :<leader>rn vim.lsp.buf.rename "[R]e[n]ame")
   (nmap :<leader>ca vim.lsp.buf.code_action "[C]ode [A]ction")
   (nmap :gd vim.lsp.buf.definition "[G]oto [D]efinition")
-  ;;(nmap :gr (. (require :telescope.builtin) :lsp_references) "[G]oto [R]eferences")
+  (nmap :gr (. (require :telescope.builtin) :lsp_references) "[G]oto [R]eferences")
   (nmap :gI vim.lsp.buf.implementation "[G]oto [I]mplementation")
   (nmap :<leader>D vim.lsp.buf.type_definition "Type [D]efinition")
-  ;;(nmap :<leader>ds (. (require :telescope.builtin) :lsp_document_symbols) "[D]ocument [S]ymbols")
-  ;;(nmap :<leader>ws (. (require :telescope.builtin) :lsp_dynamic_workspace_symbols) "[W]orkspace [S]ymbols")
+  (nmap :<leader>ds (. (require :telescope.builtin) :lsp_document_symbols) "[D]ocument [S]ymbols")
+  (nmap :<leader>ws (. (require :telescope.builtin) :lsp_dynamic_workspace_symbols) "[W]orkspace [S]ymbols")
   (nmap :K vim.lsp.buf.hover "Hover Documentation")
   (nmap :<C-k> vim.lsp.buf.signature_help "Signature Documentation")
   (nmap :gD vim.lsp.buf.declaration "[G]oto [D]eclaration")
@@ -20,6 +20,7 @@
         (fn []
           (print (vim.inspect (vim.lsp.buf.list_workspace_folders))))
         "[W]orkspace [L]ist Folders")
+
   (vim.api.nvim_buf_create_user_command bufnr :Format
                                         (fn [_] (vim.lsp.buf.format)
                                         {:desc "Format current buffer with LSP"})))
@@ -35,18 +36,18 @@
 			}}}})
 
 ((. (require :neodev) :setup))
+
 (var capabilities (vim.lsp.protocol.make_client_capabilities))
 (set capabilities
      ((. (require :cmp_nvim_lsp) :default_capabilities) capabilities))
+
 (local mason-lspconfig (require :mason-lspconfig))
 (mason-lspconfig.setup {:ensure_installed (vim.tbl_keys servers)})
-(mason-lspconfig.setup_handlers [(fn [server-name]
-                                   ((. (. (require :lspconfig) server-name)
-                                       :setup) {: capabilities
-                                                                                                                            :filetypes (. (or (. servers
-                                                                                                                                                 server-name)
-                                                                                                                                              {})
-                                                                                                                                          :filetypes)
-                                                                                                                            :on_attach on-attach
-                                                                                                                            :settings (. servers
-                                                                                                                                         server-name)}))])	
+(mason-lspconfig.setup_handlers [
+	(fn [server-name]
+    ((. (. (require :lspconfig) server-name)
+      :setup) {
+		 		: capabilities
+				:filetypes (. (or (. servers server-name) {}) :filetypes)
+				:on_attach on-attach
+				:settings (. servers server-name)}))])	

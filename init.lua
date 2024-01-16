@@ -1,6 +1,8 @@
 if vim.g.vscode then
-    -- VSCode extension
-    -- Do nothing for now.
+  -- VSCode extension
+  -- Do nothing for now.
+  require("options.lua")
+  require("keybinds.lua")
 else
 -- pick your plugin manager
 local function bootstrap(url)
