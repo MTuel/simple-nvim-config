@@ -39,6 +39,7 @@
   (require :telescope-config)
   (require :fzf-config)
   (require :nvim-cmp-config)
+  (require :conjure-config)
 ] {
   :performance {
     :reset_packpath false
