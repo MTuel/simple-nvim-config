@@ -1,4 +1,4 @@
--- :fennel:1705273129
+-- :fennel:1705379387
 local function on_attach(_, bufnr)
   local function nmap(keys, func, desc)
     if desc then
@@ -30,7 +30,8 @@ local function on_attach(_, bufnr)
   end
   return vim.api.nvim_buf_create_user_command(bufnr, "Format", _3_)
 end
-local servers = {lua_ls = {Lua = {telemetry = {enable = false}, workspace = {checkThirdParty = false}}}}
+local lspconfig = require("lspconfig")
+local servers = {lua_ls = {Lua = {telemetry = {enable = false}, workspace = {checkThirdParty = false}}}, fennel_language_server = {filetypes = {"fennel"}, single_file_support = true, settings = {fennel = {diagnostics = {globals = {"vim"}}, workspace = {library = vim.api.nvim_list_runtime_paths()}}}}}
 require("neodev").setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
