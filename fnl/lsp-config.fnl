@@ -36,9 +36,7 @@
 			}
       :workspace {
 				:checkThirdParty false
-			}
-		}
-	}
+			}}}
 	:fennel_language_server {
 		:filetypes [ :fennel ]
 		;; Something here doesn't work.
@@ -51,10 +49,7 @@
 				}
 				:workspace {
 					:library (vim.api.nvim_list_runtime_paths)
-				}
-			}
-		}
-	}})
+				}}}}})
 
 ((. (require :neodev) :setup))
 

@@ -1,4 +1,4 @@
--- :fennel:1705373621
+-- :fennel:1705451836
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.keymap.set({"n", "v"}, "<Space>", "<Nop>", {silent = true})

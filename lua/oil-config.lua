@@ -1,4 +1,4 @@
--- :fennel:1705372054
+-- :fennel:1705451836
 local oil_config
 local function _1_()
   require("oil").setup()

@@ -5,30 +5,38 @@ if vim.g.vscode then
   require("keybinds.lua")
 else
 -- pick your plugin manager
-local function bootstrap(url)
-    local name = url:gsub(".*/", "")
-    local path = vim.fn.stdpath("data") .. "/lazy/" .. name
-    vim.opt.rtp:prepend(path)
-
-    if vim.fn.isdirectory(path) == 0 then
-        print(name .. ": installing in data dir...")
-
-        vim.fn.system {"git", "clone", url, path}
-
-        vim.cmd "redraw"
-        print(name .. ": finished installing")
-    end
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Stable Version
-bootstrap("https://github.com/udayvir-singh/tangerine.nvim")
+require("lua.options")
+require("lua.keybinds")
 
-require "tangerine".setup {
-  compiler = {
-    verbose = false,
-    hooks = { "onsave", "oninit" }
-  }
-}
+require("lazy").setup({
+  { "Olical/nfnl", ft = "fennel" },
+  require("lua.alpha-config"),
+  require("lua.treesitter-config"),
+  require("lua.catppuccin-config"),
+  require("lua.which-key-config"),
+  require("lua.oil-config"),
+  require("lua.toggleterm-config"),
+  require("lua.lsp-plugins"),
+  require("lua.telescope-config"),
+  require("lua.fzf-config"),
+  require("lua.nvim-cmp-config"),
+  require("lua.conjure-config")
+}, {})
+
+require("lua.lsp-config")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

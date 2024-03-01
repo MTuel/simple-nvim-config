@@ -1,4 +1,4 @@
--- :fennel:1705374547
+-- :fennel:1705451836
 local nvim_cmp_config
 local function _1_()
   local cmp = require("cmp")

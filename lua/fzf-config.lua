@@ -1,4 +1,4 @@
--- :fennel:1705374194
+-- :fennel:1705451836
 local fzf_config
 local function _1_()
   return (vim.fn.executable("make") == 1)

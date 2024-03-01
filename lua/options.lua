@@ -1,4 +1,4 @@
--- :fennel:1704996563
+-- :fennel:1705257363
 vim.o.termguicolors = true
 vim.o.hlsearch = false
 vim.wo.number = true
