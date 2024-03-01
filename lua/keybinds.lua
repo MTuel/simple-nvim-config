@@ -1,4 +1,4 @@
--- :fennel:1705451836
+-- [nfnl] Compiled from keybinds.fnl by https://github.com/Olical/nfnl, do not edit.
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.keymap.set({"n", "v"}, "<Space>", "<Nop>", {silent = true})

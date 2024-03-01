@@ -1,4 +1,4 @@
--- :fennel:1705257363
+-- [nfnl] Compiled from options.fnl by https://github.com/Olical/nfnl, do not edit.
 vim.o.termguicolors = true
 vim.o.hlsearch = false
 vim.wo.number = true

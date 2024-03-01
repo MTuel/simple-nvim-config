@@ -1,7 +1,7 @@
--- :fennel:1705451836
+-- [nfnl] Compiled from toggleterm-config.fnl by https://github.com/Olical/nfnl, do not edit.
 local toggleterm_config
 local function _1_()
-  require("toggleterm").setup()
+  do end (require("toggleterm")).setup()
   local function _2_(term)
     if (term.direction == "horizontal") then
       return 20

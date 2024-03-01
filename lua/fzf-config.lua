@@ -1,4 +1,4 @@
--- :fennel:1705451836
+-- [nfnl] Compiled from fzf-config.fnl by https://github.com/Olical/nfnl, do not edit.
 local fzf_config
 local function _1_()
   return (vim.fn.executable("make") == 1)

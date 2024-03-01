@@ -1,4 +1,4 @@
--- :fennel:1705451836
+-- [nfnl] Compiled from nvim-cmp-config.fnl by https://github.com/Olical/nfnl, do not edit.
 local nvim_cmp_config
 local function _1_()
   local cmp = require("cmp")

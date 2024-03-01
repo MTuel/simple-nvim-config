@@ -1,4 +1,4 @@
--- :fennel:1704936060
+-- [nfnl] Compiled from treesitter-config.fnl by https://github.com/Olical/nfnl, do not edit.
 local treesitter_config
 local function _1_()
   local config = require("nvim-treesitter.configs")

@@ -26,7 +26,6 @@
                                         {:desc "Format current buffer with LSP"})))
 
 
-(local lspconfig (require :lspconfig))
 
 (local servers {
 	:lua_ls { 
@@ -36,20 +35,7 @@
 			}
       :workspace {
 				:checkThirdParty false
-			}}}
-	:fennel_language_server {
-		:filetypes [ :fennel ]
-		;; Something here doesn't work.
-		;;:root_dir (lspconfig.util.root_pattern :fnl)
-		:single_file_support true
-		:settings { 
-			:fennel {
-				:diagnostics {
-					:globals [ :vim ]
-				}
-				:workspace {
-					:library (vim.api.nvim_list_runtime_paths)
-				}}}}})
+			}}}})
 
 ((. (require :neodev) :setup))
 
@@ -67,3 +53,4 @@
 				:filetypes (. (or (. servers server-name) {}) :filetypes)
 				:on_attach on-attach
 				:settings (. servers server-name)}))])	
+
