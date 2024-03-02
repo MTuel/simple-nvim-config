@@ -28,12 +28,12 @@ require("lazy").setup({
   require("catppuccin-config"),
   require("which-key-config"),
   require("oil-config"),
+  --require("conjure-config"),
   require("toggleterm-config"),
   require("lsp-plugins"),
   require("telescope-config"),
   require("fzf-config"),
-  require("nvim-cmp-config"),
-  require("conjure-config")
+  require("nvim-cmp-config")
 }, {})
 
 require("lsp-config")

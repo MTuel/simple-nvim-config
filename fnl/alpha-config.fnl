@@ -4,8 +4,6 @@
 		:nvim-tree/nvim-web-devicons
 	]
 	:config (fn []
-                 ((. (require :alpha) :setup) (. (require :alpha.themes.dashboard)
-                                                 :config)))
-})
+  	((. (require :alpha) :setup) (. (require :alpha.themes.dashboard) :config)))})
 
 alpha-config

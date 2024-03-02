@@ -1,13 +1,14 @@
-;; Set leader key to Space.
-(set vim.g.mapleader " ")
-(set vim.g.maplocalleader " ")
-
-;; Not sure what this does.
+;; This ensures the space key is not mapped to anything else
+;; so that we can map it as the leader key.
 (vim.keymap.set [ :n :v ] ;; Modes
 		"<Space>" ;; Key(s)
 		"<Nop>"   ;; Command
-		{ :silent true }
-		)
+		{ :silent true
+			:remap true })
+
+;; Set leader key to Space.
+(set vim.g.mapleader " ")
+(set vim.g.maplocalleader " ")
 
 ;; Remap temrinal escape sequences to ESC.
 (vim.keymap.set :t 
@@ -22,6 +23,7 @@
 		"<ESC>"
 		{ :silent true :noremap true }
 		)
+
 ;; 'jk' in the terminal mode.
 (vim.keymap.set :t 
 		"jk"
@@ -42,12 +44,6 @@
 		{ :silent true :expr true }
 		)
 
-;;(vim.keymap.set :n 
-;;		"<leader>ft"
-;;		":Ex<CR>"
-;;		{ :desc "[F]ile [T]ree" }
-;;		)
-
 (vim.keymap.set :n 
 		"<leader>bp"
 		":bprevious<CR>"
@@ -58,4 +54,10 @@
 		"<leader>bn"
 		":bnext<CR>"
 		{ :desc "[B]uffer [N]ext" }
+		)
+
+(vim.keymap.set :n
+		"<leader>bk"
+		"<CMD>bd<CR>"
+		{ :desc "[B]uffer [K]ill" }
 		)
