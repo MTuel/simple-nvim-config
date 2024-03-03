@@ -25,15 +25,15 @@ require("lazy").setup({
   { "Olical/nfnl", ft = "fennel" },
   require("alpha-config"),
   require("treesitter-config"),
-  require("catppuccin-config"),
+  --require("catppuccin-config"),
+  require("gruvbox-config"),
   require("which-key-config"),
   require("oil-config"),
-  --require("conjure-config"),
-  require("toggleterm-config"),
   require("lsp-plugins"),
   require("telescope-config"),
   require("fzf-config"),
-  require("nvim-cmp-config")
+  require("nvim-cmp-config"),
+  require("conjure-config")
 }, {})
 
 require("lsp-config")
