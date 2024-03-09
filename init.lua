@@ -36,6 +36,7 @@ require("lazy").setup({
   require("conjure-config")
 }, {})
 
+-- Has to be loaded after plugins.
 require("lsp-config")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
