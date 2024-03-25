@@ -33,7 +33,6 @@ require("lazy").setup({
   require("telescope-config"),
   require("fzf-config"),
   require("nvim-cmp-config"),
-  require("conjure-config")
 }, {})
 
 -- Has to be loaded after plugins.
