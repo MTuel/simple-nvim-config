@@ -20,5 +20,4 @@
 		:folke/neodev.nvim
 	]})
 
-
 lsp-config

@@ -25,17 +25,19 @@
                                         (fn [_] (vim.lsp.buf.format)
                                         {:desc "Format current buffer with LSP"})))
 
-
-
 (local servers {
-	:lua_ls { 
-		:Lua { 
-			:telemetry { 
+	:lua_ls {
+		:Lua {
+			:telemetry {
 				:enable false
 			}
       :workspace {
 				:checkThirdParty false
-			}}}})
+			}
+	}
+	:html {}
+	:cssls {}
+	:biome {}}})
 
 ((. (require :neodev) :setup))
 
@@ -52,5 +54,24 @@
 		 		: capabilities
 				:filetypes (. (or (. servers server-name) {}) :filetypes)
 				:on_attach on-attach
-				:settings (. servers server-name)}))])	
+				:settings (. servers server-name)}))])
 
+
+(local null-ls (require :null-ls))
+(null-ls.setup {:sources [null-ls.builtins.code_actions.gitsigns
+
+                          null-ls.builtins.completion.spell
+
+													null-ls.builtins.diagnostics.codespell
+													null-ls.builtins.diagnostics.selene
+													null-ls.builtins.diagnostics.stylelint
+													null-ls.builtins.diagnostics.trail_space
+
+													null-ls.builtins.formatting.stylua
+													null-ls.builtins.formatting.astyle
+													null-ls.builtins.formatting.codespell
+													null-ls.builtins.formatting.csharpier
+													null-ls.builtins.formatting.fnlfmt
+													null-ls.builtins.formatting.htmlbeautifier
+													null-ls.builtins.formatting.stylelint
+													]})

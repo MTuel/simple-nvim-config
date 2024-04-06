@@ -30,7 +30,7 @@ local function on_attach(_, bufnr)
   end
   return vim.api.nvim_buf_create_user_command(bufnr, "Format", _3_)
 end
-local servers = {lua_ls = {Lua = {telemetry = {enable = false}, workspace = {checkThirdParty = false}}}}
+local servers = {lua_ls = {Lua = {telemetry = {enable = false}, workspace = {checkThirdParty = false}}, html = {}, cssls = {}, biome = {}}}
 do end (require("neodev")).setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = (require("cmp_nvim_lsp")).default_capabilities(capabilities)
@@ -39,4 +39,6 @@ mason_lspconfig.setup({ensure_installed = vim.tbl_keys(servers)})
 local function _4_(server_name)
   return ((require("lspconfig"))[server_name]).setup({capabilities = capabilities, filetypes = ((servers[server_name] or {})).filetypes, on_attach = on_attach, settings = servers[server_name]})
 end
-return mason_lspconfig.setup_handlers({_4_})
+mason_lspconfig.setup_handlers({_4_})
+local null_ls = require("null-ls")
+return null_ls.setup({sources = {null_ls.builtins.code_actions.gitsigns, null_ls.builtins.completion.spell, null_ls.builtins.diagnostics.codespell, null_ls.builtins.diagnostics.selene, null_ls.builtins.diagnostics.stylelint, null_ls.builtins.diagnostics.trail_space, null_ls.builtins.formatting.stylua, null_ls.builtins.formatting.astyle, null_ls.builtins.formatting.codespell, null_ls.builtins.formatting.csharpier, null_ls.builtins.formatting.fnlfmt, null_ls.builtins.formatting.htmlbeautifier, null_ls.builtins.formatting.stylelint}})
