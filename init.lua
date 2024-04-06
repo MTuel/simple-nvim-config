@@ -42,13 +42,13 @@ require('lazy').setup({
   require('plugins.vim-sleuth'),
   require('plugins.comment'),
   require('plugins.markdown-preview'),
-  require('plugins.nvim-autopairs'),
+  --require('plugins.nvim-autopairs'),
   require('plugins.toggleterm'),
-  require('plugins.copilot'),
-  require('plugins.vim-razor'),
+  --require('plugins.copilot'),
+  --require('plugins.vim-razor'),
   require('plugins.oil'),
   require('plugins.leap'),
-  require('plugins.surround'),
+  --require('plugins.surround'),
 
   --
   -- # GIT RELATED PLUGINS #
@@ -65,11 +65,7 @@ require('lazy').setup({
   require('plugins.telescope'),
   require('plugins.fzf-native'),
   require('plugins.treesitter'),
-
-  {
-    'OmniSharp/Omnisharp-vim'
-  }
-}, {})
+  }, {})
 
 require('config.options')
 require('config.keybinds')

@@ -4,21 +4,49 @@ return
 {
   -- LSP Configuration & Plugins
   -- https://github.com/neovim/nvim-lspconfig
-  'neovim/nvim-lspconfig',
-  dependencies = {
-    -- Automatically install LSPs to stdpath for neovim
-    -- https://github.com/williamboman/mason.nvim
-    { 'williamboman/mason.nvim', config = true },
-    -- https://github.com/williamboman/mason-lspconfig.nvim
-    'williamboman/mason-lspconfig.nvim',
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      -- Automatically install LSPs to stdpath for neovim
+      -- https://github.com/williamboman/mason.nvim
+      { 'williamboman/mason.nvim', config = true },
+      -- https://github.com/williamboman/mason-lspconfig.nvim
+      'williamboman/mason-lspconfig.nvim',
 
-    -- Useful status updates for LSP
-    -- https://github.com/j-hui/fidget.nvim
-    -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      -- Useful status updates for LSP
+      -- https://github.com/j-hui/fidget.nvim
+      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
-    -- Additional lua configuration, makes nvim stuff amazing!
-    -- https://github.com/folke/folke
-    'folke/neodev.nvim',
+      -- Additional lua configuration, makes nvim stuff amazing!
+      -- https://github.com/folke/folke
+      'folke/neodev.nvim',
+    },
   },
+  {
+    'nvimtools/none-ls.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim'
+    }
+  },
+  {
+    "jay-babu/mason-null-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "nvimtools/none-ls.nvim",
+    },
+    config = function()
+      --require("your.null-ls.config") -- require your null-ls config here (example below)
+      local null_ls = require("null-ls")
+
+      null_ls.setup({
+          sources = {
+              null_ls.builtins.formatting.stylua,
+              null_ls.builtins.diagnostics.htmlbeautifier,
+              null_ls.builtins.completion.spell,
+          },
+      })
+    end,
+  }
 }

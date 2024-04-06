@@ -84,3 +84,30 @@ mason_lspconfig.setup_handlers {
     }
   end
 }
+
+require("mason").setup()
+require("mason-null-ls").setup({
+  ensure_installed = {
+    'stylua',
+    'prettier',
+    'prettierd',
+    'html-lsp',
+    'cssls',
+    'fantomas',
+    'csharpier',
+    'codespell',
+    'biome',
+    'stylelint',
+    'pylint',
+    'mypy',
+  },
+  automatic_installation = true,
+  methods = {
+    diagnostics = true,
+    formatting = true,
+    code_actions = true,
+    completion = true,
+    hover = true,
+  },
+  handlers = nil
+})
