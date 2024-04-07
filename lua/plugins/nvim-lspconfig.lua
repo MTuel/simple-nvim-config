@@ -37,13 +37,11 @@ return
       "nvimtools/none-ls.nvim",
     },
     config = function()
-      --require("your.null-ls.config") -- require your null-ls config here (example below)
       local null_ls = require("null-ls")
 
       null_ls.setup({
           sources = {
               null_ls.builtins.formatting.stylua,
-              null_ls.builtins.diagnostics.htmlbeautifier,
               null_ls.builtins.completion.spell,
           },
       })
