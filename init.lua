@@ -31,8 +31,7 @@ require('lazy').setup({
   -- # THEME & VISUAL #
   --
   require('plugins.alpha'),
-  --require('plugins.catppuccin'),
-  require('plugins.gruvbox'),
+  require('plugins.onedark'),
   require('plugins.indent-blankline'),
   require('plugins.lualine'),
   require('plugins.which-key'),
