@@ -1,4 +1,3 @@
-
 return
 {
     -- Set lualine as statusline
