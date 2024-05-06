@@ -26,6 +26,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- TODO: Document what each plugin does and why I have it.
 require('lazy').setup({
   --
   -- # THEME & VISUAL #
@@ -46,7 +47,7 @@ require('lazy').setup({
   require('plugins.copilot'),
   require('plugins.vim-razor'),
   require('plugins.oil'),
-  require('plugins.leap'),
+  require('plugins.todo-comments'),
 
   --
   -- # GIT RELATED PLUGINS #
