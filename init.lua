@@ -32,8 +32,8 @@ require('lazy').setup({
   -- # THEME & VISUAL #
   --
   require('plugins.alpha'),
-  --require('plugins.onedark'),
-  require('plugins.zenbones'),
+  require('plugins.onedark'),
+  --require('plugins.zenbones'),
   require('plugins.indent-blankline'),
   require('plugins.lualine'),
   require('plugins.which-key'),
