@@ -41,6 +41,7 @@ require('lazy').setup({
   --
   -- # TWEAKS & ADDITIONAL FEATURES #
   --
+  require('plugins.barbeque'),
   require('plugins.vim-sleuth'),
   require('plugins.comment'),
   require('plugins.markdown-preview'),
@@ -65,6 +66,7 @@ require('lazy').setup({
   require('plugins.telescope'),
   require('plugins.fzf-native'),
   require('plugins.treesitter'),
+  require('plugins.csharp')
   }, {})
 
 require('config.options')
