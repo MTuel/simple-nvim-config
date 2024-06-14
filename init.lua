@@ -66,7 +66,6 @@ require('lazy').setup({
   require('plugins.telescope'),
   require('plugins.fzf-native'),
   require('plugins.treesitter'),
-  require('plugins.csharp')
   }, {})
 
 require('config.options')

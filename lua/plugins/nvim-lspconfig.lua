@@ -46,5 +46,8 @@ return
           },
       })
     end,
+  },
+  {
+    "hoffs/omnisharp-extended-lsp.nvim"
   }
 }

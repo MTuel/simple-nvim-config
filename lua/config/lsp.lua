@@ -1,6 +1,6 @@
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
@@ -41,6 +41,13 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
+
+  if client.name == "omnisharp" then
+    nmap('gd', require("omnisharp_extended").lsp_definition, '[G]oto [D]efinition')
+    nmap('gi', require("omnisharp_extended").lsp_implementation, '[G]oto [I]mplementation')
+    nmap('gr', require("omnisharp_extended").telescope_lsp_definitions, '[G]oto [R]eferences')
+  end
+
 end
 
 -- Enable the following language servers
@@ -57,6 +64,10 @@ local servers = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
     },
+  },
+  omnisharp = {
+    organize_imports_on_format = true,
+    enable_import_completion = true,
   },
 }
 
