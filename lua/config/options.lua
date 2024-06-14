@@ -7,7 +7,8 @@ vim.o.background = 'dark'
 vim.o.hlsearch = false
 
 -- Make line numbers default
-vim.wo.number = true
+--vim.wo.number = true
+vim.o.number = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -39,6 +40,10 @@ vim.o.completeopt = 'menuone,noselect'
 
 vim.o.splitright = true
 vim.o.splitbelow = true
+
+vim.o.foldmethod = 'indent'
+vim.o.nofoldenable = true
+vim.o.foldlevelstart = 99
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
