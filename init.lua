@@ -34,6 +34,7 @@ require('lazy').setup({
   require('plugins.alpha'),
   require('plugins.onedark'),
   --require('plugins.zenbones'),
+  require('plugins.barbeque'),
   require('plugins.indent-blankline'),
   require('plugins.lualine'),
   require('plugins.which-key'),
