@@ -38,6 +38,7 @@ require('lazy').setup({
   require('plugins.indent-blankline'),
   require('plugins.lualine'),
   require('plugins.which-key'),
+  require('plugins.noice'),
 
   --
   -- # TWEAKS & ADDITIONAL FEATURES #
