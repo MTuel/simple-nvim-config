@@ -7,7 +7,7 @@ vim.o.background = 'dark'
 vim.o.hlsearch = false
 
 -- Make line numbers default
---vim.wo.number = true
+vim.wo.number = true
 vim.o.number = true
 
 -- Enable mouse mode
