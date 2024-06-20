@@ -40,7 +40,7 @@ return {
     --vim.keymap.set('n', '-', '<CMD>Oil<CR>')
     vim.keymap.set('n', '-', function()
       local oil = require('oil')
-      oil.open()
+      oil.open_float()
 
       -- Wait until oil has opened, for a maximum of 1 second.
       vim.wait(1000, function()
