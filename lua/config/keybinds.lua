@@ -25,6 +25,7 @@ vim.keymap.set({'n', 't'}, '<C-l>', '<C-W>l')
 -- Map buffer navigation to Space + b + p/n
 vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', { desc = '[B]uffer [P]revious' })
 vim.keymap.set('n', '<leader>bn', ':bnext<CR>', { desc = '[B]uffer [N]ext'} )
+vim.keymap.set('n', '<leader>bk', ':bd<CR>', { desc = '[B]uffer [K]ill'} )
 
 -- Quick activation of Netrw
 --vim.keymap.set('n', '<leader>ft', ':Ex<CR>', {desc = '[F]ile [T]ree'})
@@ -34,13 +35,4 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
-
--- [[Heretical Keymaps]]
-
--- Map CTRL+S to write the file when in Normal, Insert, or Visual mode.
---vim.keymap.set({'n', 'i', 'v'}, '<C-s>', '<cmd>w<cr>')
-
--- Map CTRL+Z to undo in Insert mode
---vim.keymap.set('i', '<C-z>', '<cmd>u<cr>')
-
 
