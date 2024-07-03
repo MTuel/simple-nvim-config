@@ -45,7 +45,6 @@ else
     --
     require('plugins.vim-sleuth'),
     require('plugins.comment'),
-    require('plugins.markdown-preview'),
     require('plugins.toggleterm'),
     require('plugins.copilot'),
     require('plugins.vim-razor'),
