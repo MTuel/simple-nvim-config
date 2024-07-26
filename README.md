@@ -1,6 +1,8 @@
 # Simple Neovim Configuration
 
-This is a basic configuration file for Neovim. It's a work in progress but the goal is to keep it pretty minimal.
+This is a simple configuration file for Neovim. It's a work in progress but the goal is to keep it relatively minimal.
+
+The primary use case here is as a general purpose development environment. 
 
 ## Useful Resources:
 
@@ -18,22 +20,6 @@ Here are some resources (in no particular order) I used in putting this together
 
 ## Requirements
 
-### [Pandoc](https://pandoc.org/)
-
-- Used for [nvim-markdown-preview](https://github.com/davidgranstrom/nvim-markdown-preview).
-
-- Install:
-
-    - [Chocolatey:](https://github.com/chocolatey/choco) ```choco install pandoc```
-
-    - [Winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/): ```winget install --source winget --exact --id JohnMacFarlane.Pandoc```
-
-### [live-server](https://www.npmjs.com/package/live-server)
-
-- Used for [nvim-markdown-preview](https://github.com/davidgranstrom/nvim-markdown-preview).
-
-    - [NPM](https://nodejs.org/en/download) ```npm install -g @compodoc/live-server```
-
 ### [mingw](https://www.mingw-w64.org/)
 
 - Used for [telescope-nvim-fzf-native](https://github.com/nvim-telescope/telescope-fzf-native.nvim) and [mason.nvim](https://github.com/williamboman/mason.nvim)
@@ -45,17 +31,6 @@ Here are some resources (in no particular order) I used in putting this together
 - [lazy.nvim](https://github.com/folke/lazy.nvim)
 
     - Plugin Manager.
-
-- [catpuccin](https://github.com/catppuccin/nvim) 
-
-    - Color Theme.
-
-- [nvim-markdown-preview](https://github.com/davidgranstrom/nvim-markdown-preview)
-    
-    - Supports previewing markdown files in a web browser. Automatically reloads on file save.
-
-    - Keybindings:
-        - ```Leader + m(arkdown) + p(review)```
 
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
     
