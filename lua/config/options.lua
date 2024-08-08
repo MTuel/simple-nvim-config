@@ -42,7 +42,7 @@ vim.o.splitright = true
 vim.o.splitbelow = true
 
 vim.o.foldmethod = 'indent'
-vim.o.foldenable = false;
+vim.o.foldenable = true;
 vim.o.foldlevelstart = 99
 
 -- [[ Highlight on yank ]]
