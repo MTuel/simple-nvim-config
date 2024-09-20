@@ -7,6 +7,10 @@ return {
       default_file_explorer = true,
       delete_to_trash = true,
       skip_confirm_for_simple_edits = true,
+      lsp_file_methods = {
+        enable = false,
+        timeout_ms = 0
+      },
       view_options = {
         show_hidden = true,
         natural_order = true,
@@ -37,7 +41,6 @@ return {
       },
     })
 
-    --vim.keymap.set('n', '-', '<CMD>Oil<CR>')
     vim.keymap.set('n', '-', function()
       local oil = require('oil')
       oil.open_float()
