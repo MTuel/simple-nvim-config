@@ -45,6 +45,10 @@ vim.o.foldmethod = 'indent'
 vim.o.foldenable = true;
 vim.o.foldlevelstart = 99
 
+-- Set Tab lengths
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })

@@ -65,11 +65,11 @@ local servers = {
       telemetry = { enable = false },
     },
   },
-  omnisharp = {
-    organize_imports_on_format = true,
-    enable_import_completion = true,
-
-  },
+  --omnisharp = {
+    --organize_imports_on_format = true,
+    --enable_import_completion = true,
+  --},
+  perlnavigator = { }
 }
 
 -- Setup neovim lua configuration
