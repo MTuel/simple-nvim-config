@@ -45,7 +45,6 @@ require('lazy').setup({
   require('plugins.indent-blankline'),
   require('plugins.lualine'),
   require('plugins.which-key'),
-  --require('plugins.noice'),
 
   --
   -- # TWEAKS & ADDITIONAL FEATURES #
@@ -60,6 +59,7 @@ require('lazy').setup({
   require('plugins.trouble'),
   require('plugins.flash'),
   require('plugins.conjure'),
+  require('plugins.dadbod'),
 
   --
   -- # GIT RELATED PLUGINS #
