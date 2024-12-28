@@ -45,6 +45,7 @@ require('lazy').setup({
   require('plugins.indent-blankline'),
   require('plugins.lualine'),
   require('plugins.which-key'),
+  require('plugins.vim-razor'),
 
   --
   -- # TWEAKS & ADDITIONAL FEATURES #
@@ -53,13 +54,12 @@ require('lazy').setup({
   require('plugins.comment'),
   require('plugins.toggleterm'),
   require('plugins.copilot'),
-  require('plugins.vim-razor'),
   require('plugins.oil'),
   require('plugins.todo-comments'),
   require('plugins.trouble'),
   require('plugins.flash'),
-  require('plugins.conjure'),
-  require('plugins.dadbod'),
+  --require('plugins.conjure'),
+  --require('plugins.dadbod'),
 
   --
   -- # GIT RELATED PLUGINS #

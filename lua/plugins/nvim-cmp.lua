@@ -65,7 +65,8 @@ return
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'conjure' }
-      }
+      },
+      completion = { autocomplete = false }
     }
   end
 }
