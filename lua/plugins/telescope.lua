@@ -44,6 +44,13 @@ return
     vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
     vim.keymap.set('n', '<leader>bs', require('telescope.builtin').buffers, { desc = '[B]uffer [S]earch ' })
+
+    vim.keymap.set('n', '<leader>sp', function()
+        require('telescope.builtin').find_files {
+          cwd = vim.fs.joinpath(vim.fn.stdpath('data'), 'lazy')
+        }
+    end,
+    { desc = '[S]earch [P]ackages' })
   end
 }
 
