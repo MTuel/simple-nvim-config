@@ -58,7 +58,7 @@ require('lazy').setup({
   require('plugins.todo-comments'),
   require('plugins.trouble'),
   require('plugins.flash'),
-  --require('plugins.conjure'),
+  require('plugins.conjure'),
   --require('plugins.dadbod'),
 
   --
